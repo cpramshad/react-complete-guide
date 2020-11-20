@@ -40,7 +40,8 @@ class App extends Component {
   state = {
     persons: [
       { name: 'Ram', age: 36 },
-      { name: 'Max', age: 28 }
+      { name: 'Max', age: 28 },
+      { name: 'Haya', age: 6}
     ],
     showPersons: false
   }
@@ -80,18 +81,26 @@ class App extends Component {
       cursor: 'pointer'
     }
 
-    return (
-      <div className="App">
-        <h1>Hi, I'm a React App.</h1>
-        <button style={style} onClick={this.togglePersonsHandler}>Toggle Persons</button>
-        { this.state.showPersons ? <div>
+    let persons = null;
+
+    if (this.state.showPersons) {
+      persons = (
+        <div>
           <Person name={this.state.persons[0].name} age={this.state.persons[0].age} />
           <Person
             name={this.state.persons[1].name}
             age={this.state.persons[1].age}
             click={this.swithNameHandler.bind(this, 'Maximilian')}
             change={this.nameChangedHandler}>Hi</Person>
-        </div> : null}
+        </div>
+      );
+    }
+
+    return (
+      <div className="App">
+        <h1>Hi, I'm a React App.</h1>
+        <button style={style} onClick={this.togglePersonsHandler}>Toggle Persons</button>
+        {persons}
 
       </div>
       // React.createElement('div', {className: 'App'}, React.createElement('h1', null, 'Hi'))
