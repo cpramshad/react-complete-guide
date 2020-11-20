@@ -44,26 +44,43 @@ class App extends Component {
     ]
   }
 
-  swithNameHandler = () => {
+  swithNameHandler = (newName) => {
     console.log('Clicked');
     this.setState({
       persons: [
-        { name: 'Ramshad', age: 36 },
+        { name: newName, age: 36 },
         { name: 'Max', age: 38 }
       ]
     })
   }
 
+  nameChangedHandler = (event) => {
+    this.setState({
+      persons: [
+        { name: 'test', age: 36 },
+        { name: event.target.value, age: 38 }
+      ]
+    })
+  }
+
   render() {
+    const style = {
+      backgroundColor: 'white',
+      border: '1px solid blue',
+      padding: '8px',
+      cursor: 'pointer'
+    }
+
     return (
       <div className="App">
         <h1>Hi, I'm a React App.</h1>
-        <button onClick={this.swithNameHandler}>Switch name</button>
+        <button style={style} onClick={ () => this.swithNameHandler('Ramshad')}>Switch name</button>
         <Person name={this.state.persons[0].name} age={this.state.persons[0].age} />
         <Person
           name={this.state.persons[1].name}
           age={this.state.persons[1].age}
-          click={this.swithNameHandler}
+          click={this.swithNameHandler.bind(this, 'Maximilian')}
+          change = {this.nameChangedHandler}
         >Hi</Person>
       </div>
       // React.createElement('div', {className: 'App'}, React.createElement('h1', null, 'Hi'))
