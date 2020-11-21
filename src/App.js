@@ -1,7 +1,6 @@
 // import React, { useState } from 'react';
 import React, { Component } from 'react';
-import './App.css';
-import person from './Person/Person';
+import classes from './App.module.css';
 import Person from './Person/Person';
 
 // const App = props => {
@@ -115,10 +114,12 @@ class App extends Component {
     }
 
     return (
-      <div className="App">
+      <div className={classes.App}>
+        <div className={classes.person}>test</div>
         <h1>Hi, I'm a React App.</h1>
         <button style={style} onClick={this.togglePersonsHandler}>Toggle Persons</button>
         {persons}
+
       </div>
       // React.createElement('div', {className: 'App'}, React.createElement('h1', null, 'Hi'))
     );
