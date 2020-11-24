@@ -1,7 +1,7 @@
 // import React, { useState } from 'react';
 import React, { Component } from 'react';
 import classes from './App.module.css';
-import Person from './Person/Person';
+import Person from '../components/Person/Person';
 
 // const App = props => {
 //   const [personsState, setPersonsState] = useState({
