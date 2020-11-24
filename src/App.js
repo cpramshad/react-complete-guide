@@ -115,11 +115,10 @@ class App extends Component {
 
     return (
       <div className={classes.App}>
-        <div className={classes.person}>test</div>
+        <div className={classes.person}></div>
         <h1>Hi, I'm a React App.</h1>
         <button style={style} onClick={this.togglePersonsHandler}>Toggle Persons</button>
         {persons}
-
       </div>
       // React.createElement('div', {className: 'App'}, React.createElement('h1', null, 'Hi'))
     );
