@@ -3,7 +3,7 @@ import Aux from '../../../hoc/Auxiliary';
 import classes from './Person.module.css';
 import withClass from '../../../hoc/withClass';
 import PropTypes from 'prop-types';
-import Persons from '../Persons';
+import AuthContext from '../../../context/auth-context';
 
 class Person extends Component {
     constructor(props) {
@@ -11,16 +11,22 @@ class Person extends Component {
         this.inputElementRef = React.createRef();
     }
 
+    static contextType = AuthContext;
+
     componentDidMount() {
         // console.log(`Input - ${this.inputElement}`,this.inputElement);
         // this.inputElement.focus();
         this.inputElementRef.current.focus();
+        console.log(this.context)
     }
 
     render() {
         console.log('Person.js - rendering...')
         return (
-            <Aux>
+            <Aux> 
+                {this.context.authenticated ? <p>Authenticated!</p> : <p>Please login</p>}
+
+                        
                 <p onClick={this.props.click}>I'm {this.props.name} and {this.props.age} years old</p>
                 <p>{this.props.children}</p>
                 <input
